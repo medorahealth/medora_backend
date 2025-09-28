@@ -5,9 +5,9 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/medorahealth/Medora/server/internal/util/auth"
-	"github.com/medorahealth/Medora/server/internal/model"
-	"github.com/medorahealth/Medora/server/internal/service"
+	"github.com/medorahealth/medora_backend/internal/util/auth"
+	"github.com/medorahealth/medora_backend/internal/model"
+	"github.com/medorahealth/medora_backend/internal/service"
 
 	"github.com/gorilla/mux"
 )

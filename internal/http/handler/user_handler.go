@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"time"
 
-		"github.com/medorahealth/Medora/server/internal/util/auth"
-		"github.com/medorahealth/Medora/server/internal/service"
+		"github.com/medorahealth/medora_backend/internal/util/auth"
+		"github.com/medorahealth/medora_backend/internal/service"
 )
 
 // DTOs

@@ -5,8 +5,7 @@ import (
 	"net/http"
 	"os"
 	"strings"
-	"github.com/medorahealth/Medora/server/internal/util/auth"
-
+	"github.com/medorahealth/medora_backend/internal/util/auth"
 	"github.com/golang-jwt/jwt/v5"
 	
 )

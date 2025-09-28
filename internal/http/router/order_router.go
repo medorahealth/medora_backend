@@ -5,8 +5,8 @@ import (
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
-	"github.com/medorahealth/Medora/server/internal/http/handler"
-	"github.com/medorahealth/Medora/server/internal/http/middleware"
+	"github.com/medorahealth/medora_backend/internal/http/handler"
+	"github.com/medorahealth/medora_backend/internal/http/middleware"
 )
 
 // OrderRouter returns a chi.Router for order endpoints

@@ -3,7 +3,7 @@ package repo
 import (
 	"context"
 	"database/sql"
-	"github.com/medorahealth/Medora/server/internal/model"
+	"github.com/medorahealth/medora_backend/internal/model"
 )
 
 // LabRepository is the interface for lab database operations.

@@ -6,8 +6,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 
-	"github.com/medorahealth/Medora/server/internal/model"
-	"github.com/medorahealth/Medora/server/internal/service"
+	"github.com/medorahealth/medora_backend/internal/model"
+	"github.com/medorahealth/medora_backend/internal/service"
 )
 
 // LabHandler holds the dependencies for the lab HTTP handlers.

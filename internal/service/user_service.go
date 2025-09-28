@@ -4,8 +4,8 @@ import (
 	"context"
 	"errors"
 
-	"github.com/medorahealth/Medora/server/internal/model"
-	"github.com/medorahealth/Medora/server/internal/repo"
+	"github.com/medorahealth/medora_backend/internal/model"
+	"github.com/medorahealth/medora_backend/internal/repo"
 
 	"golang.org/x/crypto/bcrypt"
 )

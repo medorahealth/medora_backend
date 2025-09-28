@@ -2,7 +2,7 @@
 package repo
 
 import (
-	"github.com/medorahealth/Medora/server/internal/model"
+	"github.com/medorahealth/medora_backend/internal/model"
 	"context"
 	"encoding/json"
 	"time"

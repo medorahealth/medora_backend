@@ -4,8 +4,8 @@ import (
 	"context"
 
 	// NOTE: Replace 'yourproject' with your Go module name
-	"github.com/medorahealth/Medora/server/internal/repo"
-	"github.com/medorahealth/Medora/server/internal/model"
+	"github.com/medorahealth/medora_backend/internal/repo"
+	"github.com/medorahealth/medora_backend/internal/model"
 )
 
 // LabService defines the business logic operations for labs.

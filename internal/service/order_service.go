@@ -3,8 +3,8 @@
 package service
 
 import (
-	"github.com/medorahealth/Medora/server/internal/model"
-	"github.com/medorahealth/Medora/server/internal/repo"
+	"github.com/medorahealth/medora_backend/internal/model"
+	"github.com/medorahealth/medora_backend/internal/repo"
 	"context"
 	"errors"
 )

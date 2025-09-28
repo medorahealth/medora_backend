@@ -5,7 +5,7 @@ import (
 	"context"
 
 	"github.com/jackc/pgx/v5/pgxpool"
-	"github.com/medorahealth/Medora/server/internal/model"
+	"github.com/medorahealth/medora_backend/internal/model"
 )
 
 // Interface

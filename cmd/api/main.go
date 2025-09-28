@@ -2,55 +2,46 @@ package main
 
 import (
 	"log"
-	"net/http"
-	"os"
+	"github.com/gin-gonic/gin"
 
-	"github.com/joho/godotenv"
-
-	app "github.com/medorahealth/Medora/server/internal/app"
-	appHttp "github.com/medorahealth/Medora/server/internal/http" // alias since package is `http`
-	"github.com/medorahealth/Medora/server/internal/http/handler"
-	"github.com/medorahealth/Medora/server/internal/repo"
-	"github.com/medorahealth/Medora/server/internal/service"
-	_"github.com/jackc/pgx/v5/pgxpool"
+	// Adjust these import paths to match your project structure
+	"github.com/medorahealth/medora_backend/internal/http/handler"
+	"github.com/medorahealth/medora_backend/internal/config"
+	"github.com/medorahealth/medora_backend/internal/http"
+	"github.com/medorahealth/medora_backend/internal/service"
+	"github.com/medorahealth/medora_backend/internal/repo"
 )
 
+// This is an EXAMPLE of how your main.go should look.
+// You will need to adapt it to your actual application structure.
 func main() {
-	// Load .env
-	if err := godotenv.Load(); err != nil {
-		log.Println("⚠️ No .env file found, using environment variables")
+	// 1. Initialize database connection using the new config package.
+	db, err := config.ConnectDatabase()
+	if err != nil {
+		log.Fatalf("Failed to connect to database: %v", err)
 	}
-
-	// Initialize DB (uses DATABASE_URL env var)
-	db := app.InitDB()
 	defer db.Close()
 
-	// ----------------------
-	// Wire User dependencies
-	// ----------------------
-	userRepo := repo.NewUserRepository(db)
-	userService := service.NewUserService(userRepo)
-	userHandler := handlers.NewUserHandler(userService)
+	// 2. Initialize your repositories.
+	// The repository layer is created first, taking the DB connection.
+	labRepo := repo.NewLabRepo(db)
 
-	// ----------------------
-	// Wire Order dependencies
-	// ----------------------
-	orderRepo := repo.NewOrderRepo(db)
-	orderService := service.NewOrderService(orderRepo)
-	orderHandler := handlers.NewOrderHandler(orderService)
+	// 3. Initialize your services
+	// This is a placeholder; you'll need a proper NewLabService function.
+	labService := service.NewLabService(labRepo)
 
-	// ----------------------
-	// Setup Router
-	// ----------------------
-	r := appHttp.NewRouter(userHandler, orderHandler)
+	// 4. Initialize your handlers, injecting the services they depend on.
+	labHandler := handler.NewLabHandler(labService)
+	// userHandler := handler.NewUserHandler(userService)
+	// orderHandler := handler.NewOrderHandler(orderService)
 
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8080"
-	}
+	// 5. Initialize the Gin router
+	router := gin.Default()
 
-	log.Printf("🚀 Server running on :%s\n", port)
-	if err := http.ListenAndServe(":"+port, r); err != nil {
-		log.Fatal("Server failed:", err)
-	}
+	// 6. Setup routes, passing the handler instances.
+	http.SetupRoutes(router, labHandler /*, userHandler, orderHandler */)
+
+	// 7. Run the server
+	router.Run(":8080")
 }
+

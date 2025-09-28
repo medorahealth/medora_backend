@@ -3,7 +3,7 @@ package router
 import (
 	"net/http"
 
-	"github.com/medorahealth/Medora/server/internal/http/handler"
+	"github.com/medorahealth/medora_backend/internal/http/handler"
 
 	"github.com/go-chi/chi/v5"
 )
